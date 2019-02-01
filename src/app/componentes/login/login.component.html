@@ -1,0 +1,18 @@
+<form [formGroup]="frmLogin">
+  <div class="form-group">
+    <label for="edtLogin">Login</label>
+    <input id="edtLogin" type="text" class="form-control" formControlName="usuario">
+    <div *ngIf="usuario.touched && usuario.invalid" class="alert alert-danger">
+      <div *ngIf="usuario.errors.required">O usuário é obrigatório</div>
+      <div *ngIf="usuario.errors.minlength">O usuário deve possuir ao menos {{ usuario.errors.minlength.requiredLength }} caracteres</div>
+      <div *ngIf="usuario.errors.semEspacos">O usuário não pode conter espaços</div>
+      <div *ngIf="usuario.errors.unico">O usuário já foi criado</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="pwSenha">Senha</label>
+    <input id="pwSenha" type="password" class="form-control" formControlName="senha">
+    <div *ngIf="senha.touched && senha.invalid" class="alert alert-danger">O usuário é obrigatório</div>
+  </div>  
+  <button class="btn btn-primary" (click)="logar()">Logar</button>
+</form>

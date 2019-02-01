@@ -1,0 +1,5 @@
+<h1>Titulo</h1>
+<i [class.fas]="isFavoritado" [class.far]="!isFavoritado" (click)="favoritar()" class='fas fa-bell-slash' style='font-size:24px; margin-left: 20px;'></i>
+
+<!-- Mesmo resultado utilizando [ngClass] -->
+<i [ngClass]="{'fas': isFavoritado, 'far': !isFavoritado}" (click)="favoritar()" class='fas fa-bell-slash' style='font-size:24px; margin-left: 20px;'></i>

@@ -1,0 +1,47 @@
+<h2> {{ autores.length + ' Autores' }} </h2>
+
+<h3 [textContent]="titulo"></h3>
+
+<ul>
+  <li *ngFor="let autor of autores">
+    {{ autor }}
+  </li>
+</ul>
+
+<img [src]="getLinkDaImagem()">
+
+<img src="{{ getLinkDaImagem() }}">
+
+<table>
+
+  <tr>
+    <td [attr.colspan]="colSpan"></td>
+  </tr>
+
+</table>
+
+<input (keyup)="onKeyUp($event)" style="display: block;">
+
+<input (keyup.enter)="onKeyUpAngular()" style="display: block;">
+
+<input #campo (keyup.enter)="apresentarValorDoCampo(campo.value)" style="display: block;">
+
+<input [(ngModel)]="nomeCompleto" (keyup.enter)="apresentarNomeCompleto()" style="display: block;">
+
+<button (click)="salvar()" class="btn btn-primary" [class.active]="isAtivo">Salvar</button>
+
+<button [style.backgroundColor]="isAtivo ? 'blue' : 'red'" class="btn btn-primary" [class.active]="isAtivo">Cancelar</button>
+
+<button (click)="salvarComPassagemDeEvento($event)" class="btn btn-primary" [class.active]="isAtivo">Salvar com Evento</button><br/>
+
+{{ curso.titulo | uppercase }} <br/>
+
+{{ curso.estudantesMatriculados | number}} <br/>
+
+{{ curso.nota | number: '1.2-2' }} <br/>
+
+{{ curso.preco | currency: 'R$': true: '3.2-2' }} <br/>
+
+{{ curso.dataDeLancamento | date: 'dd/MM/yyyy'}} <br/>
+
+{{ textoLongo | resumoTexto: 15 }}
