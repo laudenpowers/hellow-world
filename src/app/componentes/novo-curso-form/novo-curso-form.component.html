@@ -1,0 +1,9 @@
+<form>
+  <input type="text" class="form-control" (keyup.enter)="incluirTopico(topico)" #topico>
+  <ul class="list-group">
+    <li *ngFor="let topico of topicos.controls" class="list-group-item"
+        (click)="removerTopico(topico)">
+      {{ topico.value }}
+    </li>
+  </ul>
+</form>

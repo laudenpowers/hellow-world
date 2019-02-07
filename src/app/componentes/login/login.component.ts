@@ -42,7 +42,9 @@ export class LoginComponent implements OnInit {
   }
 
   logar(){
-    console.log('Teste');
+    this.frmLogin.setErrors({
+      isLoginInvalido: true
+    });
   }
 
 }

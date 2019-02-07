@@ -1,7 +1,11 @@
-<form [formGroup]="frmLogin">
+<form [formGroup]="frmLogin" (ngSubmit)="logar()">
+  <div *ngIf="frmLogin.errors" class="alert alert-danger">
+    Login ou senha inválidos
+  </div>
   <div class="form-group">
     <label for="edtLogin">Login</label>
     <input id="edtLogin" type="text" class="form-control" formControlName="usuario">
+    <div *ngIf="usuario.pending">Checando login informado...</div>
     <div *ngIf="usuario.touched && usuario.invalid" class="alert alert-danger">
       <div *ngIf="usuario.errors.required">O usuário é obrigatório</div>
       <div *ngIf="usuario.errors.minlength">O usuário deve possuir ao menos {{ usuario.errors.minlength.requiredLength }} caracteres</div>

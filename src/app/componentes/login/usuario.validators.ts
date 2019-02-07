@@ -24,7 +24,7 @@ export class UsuarioValidators{
                     resolve(null);
                 }        
     
-            }, 2000);
+            }, 1500);
 
         });
 

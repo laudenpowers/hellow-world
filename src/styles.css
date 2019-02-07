@@ -3,8 +3,15 @@
 
 body{
     margin: 20px;
+    background-color: #d2d6de;
 }
 
 .form-control.ng-touched.ng-invalid{
-    border: 2px solid red;
+    border: 1px solid red;
+}
+
+.alert{
+    padding: 6px;
+    margin-bottom: 5px;
+    border: 1px solid transparent;
 }
