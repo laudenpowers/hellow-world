@@ -1,3 +1,4 @@
+import { SenhaValidators, deveCoincidir } from './senha.validator';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,9 +17,11 @@ export class AtualizarSenhaComponent implements OnInit {
 
   private criarValidador(): void{
     this.frmAtualizarSenha = this.fb.group({
-      'senhaAntiga': ['', Validators.required],
+      'senhaAntiga': ['', Validators.required, SenhaValidators.deveSerValida],
       'senhaNova': ['', Validators.required],
       'senhaConfirmada': ['', Validators.required]
+    },{
+      validator: deveCoincidir('senhaNova', 'senhaConfirmada')
     });
   }
 

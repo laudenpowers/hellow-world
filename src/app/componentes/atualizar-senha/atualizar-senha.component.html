@@ -12,8 +12,10 @@
         <label for="senhaAntiga">Senha Antiga</label>
         <input class="form-control" id="senhaAntiga" placeholder="Senha Antiga" 
             type="password" formControlName="senhaAntiga">
+        <div *ngIf="senhaAntiga.pending">Validando senha...</div>
         <div *ngIf="senhaAntiga.touched && senhaAntiga.invalid" class="alert alert-danger">
           <p *ngIf="senhaAntiga.errors.required">A 'Senha Antiga' é obrigatória</p>
+          <p *ngIf="senhaAntiga.errors.invalida">A senha é inválida</p>
         </div>
       </div>
 
@@ -32,6 +34,7 @@
             type="password" formControlName="senhaConfirmada">
         <div *ngIf="senhaConfirmada.touched && senhaConfirmada.invalid" class="alert alert-danger">        
           <p *ngIf="senhaConfirmada.errors.required">A 'Confirmação da Senha' é obrigatória</p>
+          <p *ngIf="senhaConfirmada.errors.isNaoCoincidentes">As senhas não conferem</p>
         </div>    
       </div>
         
