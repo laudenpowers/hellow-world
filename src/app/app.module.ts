@@ -1,7 +1,9 @@
+import { PostService } from './services/post.service';
 import { TituloPipe } from './pipe/titulo-texto.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { CursosComponent } from './componentes/cursos/cursos.component';
@@ -20,6 +22,7 @@ import { CursoFormComponent } from './componentes/curso-form/curso-form.componen
 import { LoginComponent } from './componentes/login/login.component';
 import { NovoCursoFormComponent } from './componentes/novo-curso-form/novo-curso-form.component';
 import { AtualizarSenhaComponent } from './componentes/atualizar-senha/atualizar-senha.component';
+import { PostsComponent } from './componentes/posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -40,14 +43,18 @@ import { AtualizarSenhaComponent } from './componentes/atualizar-senha/atualizar
     CursoFormComponent,
     LoginComponent,
     NovoCursoFormComponent,
-    AtualizarSenhaComponent
+    AtualizarSenhaComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    PostService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

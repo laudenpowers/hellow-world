@@ -1,0 +1,9 @@
+<input (keyup.enter)="salvarPost(tituloPost)" #tituloPost type="text" class="form-control">
+
+<ul class="list-group">
+  <li *ngFor="let post of posts" class="list-group-item">
+    <button class="btn btn-warning btn-small" (click)="atualizarPost(post)">Editar</button>
+    <button class="btn btn-danger btn-small" style="margin: 10px 10px;" (click)="excluirPost(post)">Excluir</button>
+    {{ post.title }}
+  </li>
+</ul>
