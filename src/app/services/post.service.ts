@@ -1,7 +1,8 @@
 import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Post } from '../model/post.model';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,13 @@ export class PostService {
   }
 
   excluir(post: Post): Observable<Response>{
-    return this.http.delete(this.urlPosts + '/' + post.id);
+    return this.http.delete(this.urlPosts + '/' + post.id).pipe(
+      catchError(
+        _ => (
+            Observable.throw('VSF')
+          )
+      )
+    );
   }
 
 }

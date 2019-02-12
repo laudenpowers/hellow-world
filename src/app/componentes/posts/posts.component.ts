@@ -36,8 +36,14 @@ export class PostsComponent implements OnInit {
     this.postService.inserir(post).subscribe(
       response => {
         post.id = response.json().id;
-      }, errors => {
-        console.log(errors);
+      }, (error: Response) => {
+        
+        if (error.status === 400){
+          alert('Requisição inválida: ' + error.json());
+        }else{
+          console.log(error);
+        }
+
       }
     );
 
@@ -62,11 +68,17 @@ export class PostsComponent implements OnInit {
   excluirPost(post: Post): void{
     
     this.postService.excluir(post).subscribe(
-      response =>{
+      response => {
         console.log(response);
         this.posts.splice(this.posts.indexOf(post), 1);
-      }, error => {
-        console.log(error);
+      }, (error: Response) => {
+
+        if (error.status === 404){
+          alert('O post já foi deletado');
+        }else{
+          console.log(error);
+        }
+
       }  
     );
 
