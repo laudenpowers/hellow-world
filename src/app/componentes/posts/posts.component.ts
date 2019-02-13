@@ -1,3 +1,4 @@
+import { AppError } from './app-error';
 import { PostService } from './../../services/post.service';
 import { Post } from './../../model/post.model';
 import { Component, OnInit } from '@angular/core';
@@ -21,8 +22,9 @@ export class PostsComponent implements OnInit {
     this.postService.listarPosts().subscribe(
       response => {        
         this.posts = response.json();
-      }, error => {
-        console.log(error);        
+      },(error: AppError) => {
+        alert(error.msgPrincipal);
+        console.log(error.erroOriginal);
       }
     );
 
@@ -36,14 +38,9 @@ export class PostsComponent implements OnInit {
     this.postService.inserir(post).subscribe(
       response => {
         post.id = response.json().id;
-      }, (error: Response) => {
-        
-        if (error.status === 400){
-          alert('Requisição inválida: ' + error.json());
-        }else{
-          console.log(error);
-        }
-
+      },(error: AppError) => {
+        alert(error.msgPrincipal);
+        console.log(error.erroOriginal);
       }
     );
 
@@ -58,8 +55,9 @@ export class PostsComponent implements OnInit {
     this.postService.alterar(post).subscribe(
       response => {
         console.log(response);
-      }, error =>{
-        console.log(error);
+      },(error: AppError) => {
+        alert(error.msgPrincipal);
+        console.log(error.erroOriginal);
       }
     );
 
@@ -71,15 +69,10 @@ export class PostsComponent implements OnInit {
       response => {
         console.log(response);
         this.posts.splice(this.posts.indexOf(post), 1);
-      }, (error: Response) => {
-
-        if (error.status === 404){
-          alert('O post já foi deletado');
-        }else{
-          console.log(error);
-        }
-
-      }  
+      },(error: AppError) => {
+        alert(error.msgPrincipal);
+        console.log(error.erroOriginal);
+      }
     );
 
   }  
