@@ -1,3 +1,5 @@
+import { AppErrorHandler } from './componentes/posts/app-error-handler';
+import { ErrorHandler } from '@angular/core';
 import { PostService } from './services/post.service';
 import { TituloPipe } from './pipe/titulo-texto.pipe';
 import { BrowserModule } from '@angular/platform-browser';
@@ -53,7 +55,8 @@ import { PostsComponent } from './componentes/posts/posts.component';
     HttpModule
   ],
   providers: [
-    PostService
+    PostService,
+    {provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })

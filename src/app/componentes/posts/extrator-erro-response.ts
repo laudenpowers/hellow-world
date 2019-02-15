@@ -3,18 +3,19 @@ import { RequestInvalidoError } from './request-invalido-error';
 import { AppError } from './app-error';
 
 import { Response } from '@angular/http';
+import { Observable, throwError } from 'rxjs';
 
-export class ExtratorDeErroDoReponse{
+export class ExtratorDeErroDoReponse{    
 
-    extrairErroDo(responseDeErro: Response): AppError{
+    tratarErro(error: Response): Observable<Response>{
 
-        if (responseDeErro.status === 404){
-            return new HostNaoEncontradoError('O host não responde. \nURL: ' + responseDeErro.url, responseDeErro);
-        }else if (responseDeErro.status === 400){
-            return new RequestInvalidoError('A solicitação de remoção é inválida', responseDeErro);
+        if (error.status === 404){
+            return throwError(new HostNaoEncontradoError('O host não responde. \nURL: ' + error.url, error));
+        }else if (error.status === 400){
+            return throwError(new RequestInvalidoError('A solicitação de remoção é inválida', error));
         }
 
-        return new AppError('Ocorreu um erro desconhecido', responseDeErro);
+        return throwError(new AppError('Ocorreu um erro desconhecido', error));
 
     }
 
