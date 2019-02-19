@@ -25,6 +25,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { NovoCursoFormComponent } from './componentes/novo-curso-form/novo-curso-form.component';
 import { AtualizarSenhaComponent } from './componentes/atualizar-senha/atualizar-senha.component';
 import { PostsComponent } from './componentes/posts/posts.component';
+import { SeguidoresComponent } from './componentes/seguidores/seguidores.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { PostsComponent } from './componentes/posts/posts.component';
     LoginComponent,
     NovoCursoFormComponent,
     AtualizarSenhaComponent,
-    PostsComponent
+    PostsComponent,
+    SeguidoresComponent
   ],
   imports: [
     BrowserModule,
