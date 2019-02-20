@@ -10,7 +10,9 @@
           <img style="border-radius: 50%" [src]="seguidor.avatar_url" alt="Product Image">
         </div>
         <div class="product-info">
-          <span style="color: #3c8dbc" class="product-title">{{ seguidor.login }}</span>
+          <span style="color: #3c8dbc" class="product-title">
+            <a [routerLink]="['/perfil', seguidor.login]">{{ seguidor.login }}</a>
+          </span>
           <span class="product-description">{{ seguidor.url }}</span>
         </div>
       </li>

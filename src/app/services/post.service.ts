@@ -2,7 +2,7 @@ import { ExtratorDeErroDoReponse } from './../componentes/posts/extrator-erro-re
 import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Post } from '../model/post.model';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable({

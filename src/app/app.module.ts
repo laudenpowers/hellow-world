@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CursosComponent } from './componentes/cursos/cursos.component';
@@ -26,6 +27,10 @@ import { NovoCursoFormComponent } from './componentes/novo-curso-form/novo-curso
 import { AtualizarSenhaComponent } from './componentes/atualizar-senha/atualizar-senha.component';
 import { PostsComponent } from './componentes/posts/posts.component';
 import { SeguidoresComponent } from './componentes/seguidores/seguidores.component';
+import { PrincipalComponent } from './componentes/principal/principal.component';
+import { PerfilGithubComponent } from './componentes/perfil-github/perfil-github.component';
+import { NotFoundComponent } from './componentes/not-found/not-found.component';
+import { NavbarComponent } from './componentes/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -48,13 +53,24 @@ import { SeguidoresComponent } from './componentes/seguidores/seguidores.compone
     NovoCursoFormComponent,
     AtualizarSenhaComponent,
     PostsComponent,
-    SeguidoresComponent
+    SeguidoresComponent,
+    PrincipalComponent,
+    PerfilGithubComponent,
+    NotFoundComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      { path: '', component: PrincipalComponent },
+      { path: 'seguidores', component: SeguidoresComponent },
+      { path: 'perfil/:login', component: PerfilGithubComponent },
+      { path: 'posts', component: PostsComponent },
+      { path: '**', component: NotFoundComponent },
+    ])
   ],
   providers: [
     PostService,
