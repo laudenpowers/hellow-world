@@ -3,7 +3,7 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active current">
-          <a routerLink="/seguidores">Seguidores</a>
+          <a routerLink="/seguidores" [queryParams]="{pagina: 1, ordenacao: 'asc'}">Seguidores</a>
         </li>
         <li routerLinkActive="active current">
           <a routerLink="/posts">Posts</a>
